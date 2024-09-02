@@ -20,17 +20,17 @@ class Beverage
 {
     public string $color;
     public float $price;
-    public static string $temperature = 'cold';
+    public string $temperature;
 
     public function __construct(string $color, float $price)
     {
         $this->color = $color;
         $this->price = $price;
-        self::$temperature;
+        $this->temperature = 'cold';
     }
 
     public function getInfo() {
-        $temperature = self::$temperature;
+        $temperature = $this->temperature;
         $color = $this->color;
         echo sprintf('This beverage is %s and %s.' . '<br />', $temperature, $color);
     }
@@ -88,3 +88,4 @@ $duvel->getInfo();
 
 // here is the error 
 $cola->getAlcoholPercentage();
+
