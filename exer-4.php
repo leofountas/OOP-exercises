@@ -2,26 +2,22 @@
 
 declare(strict_types=1);
 
-/* EXERCISE 3
+/* EXERCISE 4
 
-TODO: Copy the code of exercise 2 to here and delete everything related to cola.
-TODO: Make all properties private.
-TODO: Make all the other prints work without error.
-TODO: After fixing the errors. Change the color of Duvel to light instead of blond and also print this new color on the screen after all the other things that were already printed (to be sure that the color has changed).
-TODO: Create a new private method in the Beer class called beerInfo which returns "Hi i'm Duvel and have an alcochol percentage of 8.5 and I have a light color."
+Copy the code of exercise 3 to here and delete everything related to cola.
 
-Make sure that you use the variables and not just this text line.
-
-TODO: Print this method on the screen on a new line.
+TODO: Make all properties protected.
+TODO: Make all the other prints work without error without changing the beverage class.
+TODO: Don't call getters in de child class.
 
 USE TYPEHINTING EVERYWHERE!
 */
 
 class Beverage 
 {
-    private string $color;
-    private float $price;
-    private string $temperature;
+    protected string $color;
+    protected float $price;
+    protected string $temperature;
 
     public function __construct(string $color, float $price)
     {
@@ -49,8 +45,8 @@ class Beverage
 
 class Beer extends Beverage 
 {
-    private string $name;
-    private string $alcoholpercentage;
+    protected string $name;
+    protected string $alcoholpercentage;
 
 
     public function __construct(string $color, float $price, string $name, string $alcoholpercentage)
@@ -65,9 +61,8 @@ class Beer extends Beverage
     }
 
     private function beerInfo() {
-        $alcoholpercentage = $this->getAlcoholPercentage();
-        $color = $this->getColor();
-        return sprintf('Hi i\'m %s and have an alcochol percentage of %s and I have a %s color' . '<br />', $this->name, $alcoholpercentage, $color);
+        //  removed the getters cause thx to the protected proprieties we can access them normally also in child class
+        return sprintf('Hi i\'m %s and have an alcochol percentage of %s and I have a %s color' . '<br />', $this->name, $this->alcoholpercentage, $this->color);
     }
 
     public function printBeerInfo() {
