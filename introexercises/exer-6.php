@@ -20,9 +20,10 @@ Use typehinting everywhere!
 
 class Beverage 
 {
-    public string $color;
-    public float $price;
-    public string $temperature;
+    protected const BARNAME = 'Het Vervolg';
+    private string $color;
+    private float $price;
+    private string $temperature;
 
     public function __construct(string $color, float $price)
     {
@@ -36,13 +37,17 @@ class Beverage
         $color = $this->color;
         echo sprintf('This beverage is %s and %s.' . '<br />', $temperature, $color);
     }
+
+    public static function printBarname() {
+        echo self::BARNAME . '<br />';
+    }
 }
 
 
 class Beer extends Beverage 
 {
-    public string $name;
-    public string $alcoholpercentage;
+    private string $name;
+    private string $alcoholpercentage;
 
 
     public function __construct(string $color, float $price, string $name, string $alcoholpercentage)
@@ -55,7 +60,15 @@ class Beer extends Beverage
     public function getAlcoholPercentage():string {
         return $this->alcoholpercentage;
     }
+
+    public static function whereBuy() {
+      echo sprintf('You can buy this Beer at %s', parent::BARNAME);
+    }
 }
 
 
 
+Beverage::printBarname();
+Beer::printBarname();
+
+Beer::whereBuy();
