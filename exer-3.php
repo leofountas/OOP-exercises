@@ -16,3 +16,78 @@ TODO: Print this method on the screen on a new line.
 
 USE TYPEHINTING EVERYWHERE!
 */
+
+class Beverage 
+{
+    private string $color;
+    private float $price;
+    private string $temperature;
+
+    public function __construct(string $color, float $price)
+    {
+        $this->color = $color;
+        $this->price = $price;
+        $this->temperature = 'cold';
+    }
+
+    public function getInfo() {
+        $temperature = $this->temperature;
+        $color = $this->color;
+        echo sprintf('This beverage is %s and %s.' . '<br />', $temperature, $color);
+    }
+
+    public function changeColor(string $color) {
+        $this->color = $color;
+    }
+
+    public function getColor():string {
+        return $this->color;
+    }
+}
+
+
+
+class Beer extends Beverage 
+{
+    private string $name;
+    private string $alcoholpercentage;
+
+
+    public function __construct(string $color, float $price, string $name, string $alcoholpercentage)
+    {
+        parent::__construct($color, $price);
+        $this->name = $name;
+        $this->alcoholpercentage = $alcoholpercentage;
+    }
+
+    public function getAlcoholPercentage():string {
+        return $this->alcoholpercentage;
+    }
+
+    private function beerInfo() {
+        $alcoholpercentage = $this->getAlcoholPercentage();
+        $color = $this->getColor();
+        return sprintf('Hi i\'m Duvel and have an alcochol percentage of %s and I have a %s color' . '<br />', $alcoholpercentage, $color);
+    }
+
+    public function printBeerInfo() {
+        echo $this->beerInfo();
+    }
+}
+
+
+$duvel = new Beer('blond', 3.5, 'Duvel', '8,5%');
+
+echo 'Alcohol Percentage: ' .  $duvel->getAlcoholPercentage() . '<br />';
+
+printf('Alcohol Percentage: %s' . '<br />', $duvel->getAlcoholPercentage());
+
+$duvel->getInfo();
+
+$duvel->changeColor('light');
+
+echo $duvel->getColor() . '<br />';
+
+$duvel->printBeerInfo();
+
+
