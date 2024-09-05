@@ -1,9 +1,9 @@
 <?php
 
 
-// Votre mission:
-//     Créer la classe Encounter
-//     Remplacer les fonctions fournies dans le code par des méthodes de classe
+// Your mission:
+// Create the Encounter class
+// Replace functions provided in the code with class methods
 
 
 const RESULT_WINNER = 1;
